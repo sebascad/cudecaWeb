@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación Cudeca - Pasarela de Pago</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Superior -->
+    <header class="payment-header">
+        <div class="logo-container">
+            <img src="images/logo.jpg" alt="Fundación Cudeca" class="logo-img">
+        </div>
+        <div class="header-center">
+            <h1 class="header-slogan">Tu Apoyo es <span class="esperanza">Esperanza</span></h1>
+        </div>
+        <div class="header-right">
+            <button class="btn-ejemplo">
+                <span class="icon-user">👤</span>
+                EJEMPULOUSUARIO
+            </button>
+            <p class="secure-text">Pago 100% Seguro</p>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <div class="payment-container">
+        <main class="payment-main">
+            <!-- Formulario de Datos - Izquierda -->
+            <section class="form-section">
+                <h1 class="form-title">Tus Datos</h1>
+                
+                <form class="payment-form">
+                    <div class="form-group">
+                        <span class="input-icon">✦</span>
+                        <input type="text" placeholder="Nombre" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <span class="input-icon">✦</span>
+                        <input type="text" placeholder="Apellidos" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <span class="input-icon">✦</span>
+                        <input type="email" placeholder="Correo Electrónico" class="form-input" required>
+                    </div>
+
+                    <h2 class="form-subtitle">Método de Pago</h2>
+                    
+                    <!-- Selector de método de pago -->
+                    <div class="payment-method-selector">
+                        <button type="button" class="payment-method-btn active" id="creditCardBtn" onclick="showPaymentMethod('creditCard')">
+                            💳 Tarjeta de Crédito
+                        </button>
+                        <button type="button" class="payment-method-btn" id="paypalBtn" onclick="showPaymentMethod('paypal')">
+                            <img src="images/paypal.jpg" alt="PayPal" style="height: 20px; width: auto;">
+                            PayPal
+                        </button>
+                    </div>
+
+                    <!-- Formulario Tarjeta de Crédito -->
+                    <div id="creditCardForm" class="payment-method-form">
+                        <div class="form-group">
+                            <span class="input-icon">✦</span>
+                            <input type="text" placeholder="Número de tarjeta" class="form-input" maxlength="19">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <div class="date-selector-group">
+                                    <select class="form-input date-select" required>
+                                        <option value="">Mes</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    <span class="date-separator">/</span>
+                                    <select class="form-input date-select" required>
+                                        <option value="">Año</option>
+                                        <option value="25">25</option>
+                                        <option value="26">26</option>
+                                        <option value="27">27</option>
+                                        <option value="28">28</option>
+                                        <option value="29">29</option>
+                                        <option value="30">30</option>
+                                        <option value="31">31</option>
+                                        <option value="32">32</option>
+                                        <option value="33">33</option>
+                                        <option value="34">34</option>
+                                        <option value="35">35</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group half">
+                                <span class="input-icon">✦</span>
+                                <input type="text" placeholder="CVC" class="form-input" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario PayPal -->
+                    <div id="paypalForm" class="payment-method-form" style="display: none;">
+                        <div class="paypal-info">
+                            <p class="paypal-description">
+                                <img src="images/paypal.jpg" alt="PayPal" style="height: 24px; width: auto;">
+                                Serás redirigido a PayPal para completar tu pago de forma segura.
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <span class="input-icon">✉</span>
+                            <input type="email" placeholder="Correo electrónico de PayPal" class="form-input">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">
+                        CONFIRMAR Y PAGAR
+                        <span class="cart-icon">🛒</span>
+                    </button>
+                </form>
+            </section>
+
+            <!-- Resumen de Entrada - Derecha -->
+            <section class="summary-section">
+                <h2 class="summary-title">Resumen de tu Entrada</h2>
+                
+                <div class="summary-card">
+                    <img src="images/cenaBenefica.jpg" alt="Cena Benéfica" class="summary-image">
+                    
+                    <h3 class="summary-event-name">Cena Benéfica de Verano</h3>
+                    
+                    <p class="summary-event-date">25 Nov 2025 - 21:00h</p>
+                    
+                    <p class="summary-ticket-type">1x Entrada General</p>
+                    
+                    <div class="total-section">
+                        <p class="total-label">Total a Pagar:</p>
+                        <p class="total-amount">30,00€</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-section">
+                <img src="images/logo.jpg" alt="Fundación Cudeca Logo">
+                <p class="tagline">Tu Apoyo es Esperanza</p>
+                <p>Cuidados paliativos y apoyo integral para pacientes oncológicos y sus familias en la Costa del Sol.</p>
+                <p style="margin-top: 15px; font-style: italic;">🤝 Juntos construimos esperanza cada día</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📍 Avenida del Cudeca s/n<br>29631 Benalmádena, Málaga</p>
+                <p>📞 +34 952 564 910</p>
+                <p>📧 info@cudeca.org</p>
+                <p>🕐 Lun - Vie: 9:00 - 18:00</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <a href="#">→ Sobre Nosotros</a>
+                <a href="#">→ Cómo Ayudar</a>
+                <a href="#">→ Eventos</a>
+                <a href="#">→ Voluntariado</a>
+                <a href="#">→ Donaciones</a>
+                <a href="#">→ Blog</a>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Facebook">f</a>
+                    <a href="#" class="social-icon" title="Instagram">📷</a>
+                    <a href="#" class="social-icon" title="Twitter">🐦</a>
+                    <a href="#" class="social-icon" title="LinkedIn">in</a>
+                </div>
+                <p style="margin-top: 20px;">📧 Newsletter</p>
+                <p style="font-size: 12px; opacity: 0.8;">Mantente informado de nuestras actividades</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Fundación Cudeca. Todos los derechos reservados.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Cookies</a>
+                <a href="#">Aviso Legal</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPaymentMethod(method) {
+            const creditCardForm = document.getElementById('creditCardForm');
+            const paypalForm = document.getElementById('paypalForm');
+            const creditCardBtn = document.getElementById('creditCardBtn');
+            const paypalBtn = document.getElementById('paypalBtn');
+
+            if (method === 'creditCard') {
+                creditCardForm.style.display = 'block';
+                paypalForm.style.display = 'none';
+                creditCardBtn.classList.add('active');
+                paypalBtn.classList.remove('active');
+            } else {
+                creditCardForm.style.display = 'none';
+                paypalForm.style.display = 'block';
+                creditCardBtn.classList.remove('active');
+                paypalBtn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
