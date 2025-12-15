@@ -40,7 +40,7 @@
             max-width: 1150px;
             background: white;
             border-radius: 15px;
-            padding: 12px 35px 35px;
+            padding: 20px 35px 35px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             margin-bottom: 60px;
         }
@@ -80,7 +80,7 @@
             text-overflow: ellipsis;
         }
 
-        .event-image {
+        .event-image {      
             width: 100%;
             height: auto;
             display: block;
@@ -167,41 +167,7 @@
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s;
-        }
-
-        .signup-btn:hover {
-            background: #ffed4e;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .event-detail-container {
-                padding: 20px;
-            }
-
-            .event-main-card {
-                max-width: 100%;
-                padding: 20px;
-                margin-bottom: 90px;
-            }
-
-            .event-card-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-
-            .page-title {
-                font-size: 24px;
-                white-space: normal;
-            }
-
-            .event-details-card {
-                width: 85%;
-                padding: 20px 25px;
-            }
+            margin-bottom: 40px;
         }
     </style>
 </head>
@@ -237,5 +203,55 @@
 
         </div>
     </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-section">
+                <img src="images/logo.jpg" alt="Fundación Cudeca Logo">
+                <p class="tagline">Tu Apoyo es Esperanza</p>
+                <p>Cuidados paliativos y apoyo integral para pacientes oncológicos y sus familias en la Costa del Sol.</p>
+                <p style="margin-top: 15px; font-style: italic;">🤝 Juntos construimos esperanza cada día</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📍 Avenida del Cudeca s/n<br>29631 Benalmádena, Málaga</p>
+                <p>📞 +34 952 564 910</p>
+                <p>📧 info@cudeca.org</p>
+                <p>🕐 Lun - Vie: 9:00 - 18:00</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <a href="#">→ Sobre Nosotros</a>
+                <a href="#">→ Cómo Ayudar</a>
+                <a href="#">→ Eventos</a>
+                <a href="#">→ Voluntariado</a>
+                <a href="#">→ Donaciones</a>
+                <a href="#">→ Blog</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Facebook">f</a>
+                    <a href="#" class="social-icon" title="Instagram">📷</a>
+                    <a href="#" class="social-icon" title="Twitter">🐦</a>
+                    <a href="#" class="social-icon" title="LinkedIn">in</a>
+                </div>
+                <p style="margin-top: 20px;">📧 Newsletter</p>
+                <p style="font-size: 12px; opacity: 0.8;">Mantente informado de nuestras actividades</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Fundación Cudeca. Todos los derechos reservados.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Cookies</a>
+                <a href="#">Aviso Legal</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

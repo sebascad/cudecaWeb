@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos los Eventos - Fundación Cudeca</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { min-height: 100vh; display: flex; flex-direction: column; }
+        
+        /* HEADER DE PÁGINA */
+        .page-header {
+            background: white;
+            padding: 40px 50px;
+            text-align: center;
+            border-bottom: 3px solid #009639;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .page-header h1 {
+            font-size: 48px;
+            color: #009639;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .page-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* CONTENEDOR PRINCIPAL */
+        .eventos-container {
+            padding: 60px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        
+        /* FILTROS */
+        .filtros {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .filtro-btn {
+            background: white;
+            border: 2px solid #009639;
+            color: #009639;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filtro-btn:hover, .filtro-btn.active {
+            background: #009639;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,150,57,0.3);
+        }
+        
+        /* GRID DE EVENTOS */
+        .eventos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        /* TARJETA DE EVENTO MEJORADA */
+        .evento-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .evento-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+        }
+        .evento-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .evento-content {
+            padding: 20px;
+        }
+        .evento-tag {
+            display: inline-block;
+            background: #009639;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .evento-titulo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .evento-descripcion {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .evento-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+        .evento-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .evento-precio {
+            font-size: 18px;
+            font-weight: bold;
+            color: #009639;
+        }
+        .evento-precio.gratis {
+            color: #ffd200;
+        }
+        
+        /* ESTADO DEL EVENTO */
+        .evento-estado {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .estado-disponible {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .estado-pocas {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+        .estado-completo {
+            background: #ffebee;
+            color: #c62828;
+        }
+        
+        /* FOOTER */
+        .footer-pro { 
+            background: linear-gradient(135deg, #006428, #009639); 
+            color: white; 
+            padding: 50px 50px 30px; 
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15); 
+            margin-top: auto;
+        }
+        .footer-grid { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: grid; 
+            grid-template-columns: 2fr 1fr 1fr 1fr; 
+            gap: 50px; 
+            padding-bottom: 30px; 
+            border-bottom: 1px solid rgba(255,255,255,0.2); 
+        }
+        .footer-logo img { width: 200px; background: white; padding: 10px; border-radius: 8px; margin-bottom: 10px; }
+        .footer-logo .tag { color: #ffd200; font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+        .footer-logo p { color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; }
+        .footer-col h3 { 
+            color: white; 
+            font-size: 16px; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            text-transform: uppercase; 
+        }
+        .footer-col a, .footer-col p { 
+            color: rgba(255,255,255,0.85); 
+            font-size: 14px; 
+            line-height: 2; 
+            text-decoration: none; 
+            display: flex; 
+            gap: 8px; 
+            transition: all 0.3s; 
+        }
+        .footer-col a:hover { color: #ffd200; transform: translateX(5px); }
+        .footer-col p { margin: 0; }
+        .socials { display: flex; gap: 12px; margin-top: 10px; }
+        .social { 
+            width: 36px; 
+            height: 36px; 
+            background: rgba(255,255,255,0.1); 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            transition: all 0.3s; 
+        }
+        .social img { width: 20px; height: 20px; filter: brightness(0) invert(1); }
+        .social:hover { background: #ffd200; transform: translateY(-3px); }
+        .social:hover img { filter: brightness(0); }
+        .footer-end { 
+            max-width: 1400px; 
+            margin: 25px auto 0; 
+            display: flex; 
+            justify-content: space-between; 
+            color: rgba(255,255,255,0.7); 
+            font-size: 13px; 
+        }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: #ffd200; }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .page-header { padding: 30px 20px; }
+            .page-header h1 { font-size: 32px; }
+            .eventos-container { padding: 40px 20px; }
+            .eventos-grid { grid-template-columns: 1fr; }
+            .footer-pro { padding: 30px 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-end { flex-direction: column; gap: 15px; text-align: center; }
+            .footer-links { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.jpg" alt="Fundación Cudeca Logo" class="logo-img">
+        </div>
+        <h1 class="header-title">Tu Apoyo es <span class="esperanza">Esperanza</span></h1>
+        <button class="login-btn">
+            <span>👤</span>
+            ACCEDE/REGÍSTRATE
+        </button>
+    </header>
+
+    <div class="page-header">
+        <h1>Todos Nuestros Eventos</h1>
+        <p>Únete a nosotros y ayuda a construir esperanza. Cada evento contribuye a mejorar la vida de pacientes y familias.</p>
+    </div>
+
+    <div class="eventos-container">
+        <div class="filtros">
+            <button class="filtro-btn active">Todos</button>
+            <button class="filtro-btn">Deportivos</button>
+            <button class="filtro-btn">Culturales</button>
+            <button class="filtro-btn">Solidarios</button>
+            <button class="filtro-btn">Próximamente</button>
+        </div>
+
+        <div class="eventos-grid">
+            <!-- Evento 1 -->
+            <div class="evento-card" onclick="window.location.href='evento-caminata.html'">
+                <img src="images/walkathon.jpg" alt="Marcha por la Vida" class="evento-img">
+                <div class="evento-content">
+                    <span class="evento-tag">Deportivo</span>
+                    <h3 class="evento-titulo">Marcha por la Vida</h3>
+                    <p class="evento-descripcion">Participa en nuestra marcha anual. 10 km de solidaridad por las calles de Málaga.</p>
+                    <div class="evento-info">
+                        <div class="info-item">📅 23 de noviembre de 2025</div>
+                        <div class="info-item">🕐 09:00 - 13:00</div>
+                        <div class="info-item">📍 Plaza de la Marina, Málaga</div>
+                    </div>
+                    <div class="evento-footer">
+                        <span class="evento-precio">15€</span>
+                        <span class="evento-estado estado-disponible">Plazas disponibles</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 2 -->
+            <div class="evento-card">
+                <img src="images/caminata.jpg" alt="Caminata Solidaria" class="evento-img">
+                <div class="evento-content">
+                    <span class="evento-tag">Deportivo</span>
+                    <h3 class="evento-titulo">Caminata Solidaria "Un Paseo por la Esperanza"</h3>
+                    <p class="evento-descripcion">Recorrido de 4 km por el paseo marítimo. Apto para todas las edades.</p>
+                    <div class="evento-info">
+                        <div class="info-item">📅 30 de enero de 2026</div>
+                        <div class="info-item">🕐 10:00 - 13:00</div>
+                        <div class="info-item">📍 Paseo de la Farola</div>
+                    </div>
+                    <div class="evento-footer">
+                        <span class="evento-precio">10€</span>
+                        <span class="evento-estado estado-disponible">Plazas disponibles</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 3 -->
+            <div class="evento-card">
+                <img src="images/concierto.jpg" alt="Concierto Indie" class="evento-img">
+                <div class="evento-content">
+                    <span class="evento-tag">Cultural</span>
+                    <h3 class="evento-titulo">Concierto Indie Benéfico</h3>
+                    <p class="evento-descripcion">Noche de música indie con bandas locales. Todo lo recaudado va a Cudeca.</p>
+                    <div class="evento-info">
+                        <div class="info-item">📅 18 de febrero de 2026</div>
+                        <div class="info-item">🕐 20:00 - 01:00</div>
+                        <div class="info-item">📍 Sala Paris 15, Málaga</div>
+                    </div>
+                    <div class="evento-footer">
+                        <span class="evento-precio">20€</span>
+                        <span class="evento-estado estado-pocas">Pocas plazas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 4 -->
+            <div class="evento-card">
+                <img src="images/mercadillo.jpg" alt="Mercadillo Vintage" class="evento-img">
+                <div class="evento-content">
+                    <span class="evento-tag">Solidario</span>
+                    <h3 class="evento-titulo">Mercadillo Vintage Solidario</h3>
+                    <p class="evento-descripcion">Encuentra tesoros vintage y ayuda a la fundación. Ropa, libros y más.</p>
+                    <div class="evento-info">
+                        <div class="info-item">📅 04 de enero de 2026</div>
+                        <div class="info-item">🕐 10:00 - 18:00</div>
+                        <div class="info-item">📍 Centro Cudeca, Benalmádena</div>
+                    </div>
+                    <div class="evento-footer">
+                        <span class="evento-precio gratis">Entrada libre</span>
+                        <span class="evento-estado estado-disponible">Acceso libre</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 5 -->
+            <div class="evento-card">
+                <img src="images/abuelitas.jpg" alt="Jornada Puertas Abiertas" class="evento-img">
+                <div class="evento-content">
+                    <span class="evento-tag">Informativo</span>
+                    <h3 class="evento-titulo">Jornada de Puertas Abiertas</h3>
+                    <p class="evento-descripcion">Conoce nuestras instalaciones y el trabajo que realizamos cada día.</p>
+                    <div class="evento-info">
+                        <div class="info-item">📅 15 de marzo de 2026</div>
+                        <div class="info-item">🕐 10:00 - 14:00</div>
+                        <div class="info-item">📍 Centro Cudeca, Benalmádena</div>
+                    </div>
+                    <div class="evento-footer">
+                        <span class="evento-precio gratis">Gratis</span>
+                        <span class="evento-estado estado-disponible">Sin inscripción</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 6 -->
+            <div class="evento-card">
+                <img src="images/walkathon.jpg" alt="Torneo Golf" class="evento-img">
+                <div class="evento-content">
+                    <span class="evento-tag">Deportivo</span>
+                    <h3 class="evento-titulo">Torneo de Golf Solidario</h3>
+                    <p class="evento-descripcion">18 hoyos por la esperanza. Incluye almuerzo y trofeos.</p>
+                    <div class="evento-info">
+                        <div class="info-item">📅 22 de abril de 2026</div>
+                        <div class="info-item">🕐 08:00 - 15:00</div>
+                        <div class="info-item">📍 Club de Golf Torrequebrada</div>
+                    </div>
+                    <div class="evento-footer">
+                        <span class="evento-precio">80€</span>
+                        <span class="evento-estado estado-completo">Completo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-pro">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="images/logo.jpg" alt="Logo Cudeca">
+                <p class="tag">Tu Apoyo es Esperanza</p>
+                <p>Cuidados paliativos y apoyo integral para pacientes oncológicos y sus familias en la Costa del Sol.</p>
+                <p style="margin-top: 15px; font-style: italic;">🤝 Juntos construimos esperanza cada día</p>
+            </div>
+            <div class="footer-col">
+                <h3>Contacto</h3>
+                <p>📍 Avenida del Cudeca s/n<br>29631 Benalmádena, Málaga</p>
+                <p>📞 +34 952 564 910</p>
+                <p>📧 info@cudeca.org</p>
+                <p>🕐 Lun - Vie: 9:00 - 18:00</p>
+            </div>
+            <div class="footer-col">
+                <h3>Navegación</h3>
+                <a href="#">→ Sobre Nosotros</a>
+                <a href="#">→ Cómo Ayudar</a>
+                <a href="index.html">→ Eventos</a>
+                <a href="#">→ Voluntariado</a>
+                <a href="#">→ Donaciones</a>
+                <a href="#">→ Blog</a>
+            </div>
+            <div class="footer-col">
+                <h3>Síguenos</h3>
+                <div class="socials">
+                    <a href="#" class="social"><img src="images/facebook-icon.png" alt="Facebook"></a>
+                    <a href="#" class="social"><img src="images/instagram-icon.png" alt="Instagram"></a>
+                    <a href="#" class="social"><img src="images/twitter-icon.png" alt="Twitter"></a>
+                    <a href="#" class="social"><img src="images/linkedin-icon.png" alt="LinkedIn"></a>
+                </div>
+                <p style="margin-top: 20px;">📧 Newsletter</p>
+                <p style="font-size: 12px; opacity: 0.8;">Mantente informado de nuestras actividades</p>
+            </div>
+        </div>
+        <div class="footer-end">
+            <p>© 2025 Fundación Cudeca. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Cookies</a>
+                <a href="#">Aviso Legal</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
