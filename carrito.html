@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundación Cudeca - Carrito</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pasarela_pago.css">
+
+</head>
+<body>
+    <!-- Header Superior -->
+    <header class="payment-header">
+        <div class="logo-container">
+            <a href="index.html">
+            <img src="images/logo.jpg" alt="Fundación Cudeca" class="logo-img">
+            </a>
+        </div>
+        <div class="header-center">
+            <h1 class="header-slogan">Tu Apoyo es <span class="esperanza">Esperanza</span></h1>
+        </div>
+        <div class="header-right">
+            <button class="btn-ejemplo">
+                <span class="icon-user">👤</span>
+                EJEMPULOUSUARIO
+            </button>
+            <p class="secure-text">Compra 100% Segura</p>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <div class="cart-container">
+        <h1 class="cart-title">Tu Carrito</h1>
+        
+        <div class="cart-content">
+            <!-- Información del Evento -->
+            <section class="cart-event-section">
+                <div class="cart-event-card">
+                    <img src="images/cenaBenefica.jpg" alt="Cena Benéfica" class="cart-event-image">
+                    
+                    <div class="cart-event-info">
+                        <span class="event-badge">EVENTO BENÉFICO</span>
+                        <h2 class="cart-event-title">Cena Benéfica de Verano</h2>
+                        
+                        <div class="cart-event-details">
+                            <div class="detail-item">
+                                <span class="detail-icon">📅</span>
+                                <div>
+                                    <p class="detail-label">Fecha</p>
+                                    <p class="detail-value">25 de Noviembre de 2025</p>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <span class="detail-icon">🕐</span>
+                                <div>
+                                    <p class="detail-label">Hora</p>
+                                    <p class="detail-value">21:00h</p>
+                                </div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <span class="detail-icon">📍</span>
+                                <div>
+                                    <p class="detail-label">Lugar</p>
+                                    <p class="detail-value">Fundación Cudeca, Benalmádena</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="event-description">
+                            <h3>Descripción del Evento</h3>
+                            <p>Únete a nosotros en esta maravillosa velada solidaria. Disfruta de una cena especial mientras apoyas nuestra misión de ofrecer cuidados paliativos de calidad. Cada entrada contribuye directamente a mejorar la vida de nuestros pacientes y sus familias.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resumen del Pedido -->
+            <aside class="cart-summary-section">
+                <div class="cart-summary-card">
+                    <h2 class="summary-card-title">Resumen del Pedido</h2>
+                    
+                    <div class="ticket-selector">
+                        <label class="ticket-label">Tipo de Entrada</label>
+                        <div class="ticket-type-box">
+                            <div class="ticket-info">
+                                <span class="ticket-name">Entrada General</span>
+                                <span class="ticket-price">30,00€</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label class="quantity-label">Cantidad de Entradas</label>
+                        <div class="quantity-controls">
+                            <button type="button" class="quantity-btn" >-</button>
+                            <input type="number" id="quantity" class="quantity-input" value="1" min="1" max="10" readonly>
+                            <button type="button" class="quantity-btn" >+</button>
+                        </div>
+                        <p class="quantity-note">Máximo 10 entradas por compra</p>
+                    </div>
+                    
+                    <div class="price-breakdown">
+                        <div class="price-row">
+                            <span>Subtotal (<span id="ticketCount">1</span> entrada<span id="plural">s</span>)</span>
+                            <span id="subtotal">30,00€</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Gastos de gestión</span>
+                            <span>0,00€</span>
+                        </div>
+                        <div class="price-row total-row">
+                            <span>Total</span>
+                            <span id="total">30,00€</span>
+                        </div>
+                    </div>
+                    <a href="pasarela_de_pago.html">
+                    <button class="btn-next">
+                        SIGUIENTE
+                        <span class="arrow-icon">→</span>
+                    </button>
+                    </a>
+
+                    <div class="trust-badges">
+                        <div class="trust-item">
+                            <span>🔒</span>
+                            <span>Pago Seguro</span>
+                        </div>
+                        <div class="trust-item">
+                            <span>✓</span>
+                            <span>Confirmación Inmediata</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo-section">
+                <img src="images/logo.jpg" alt="Fundación Cudeca Logo">
+                <p class="tagline">Tu Apoyo es Esperanza</p>
+                <p>Cuidados paliativos y apoyo integral para pacientes oncológicos y sus familias en la Costa del Sol.</p>
+                <p style="margin-top: 15px; font-style: italic;">🤝 Juntos construimos esperanza cada día</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📍 Avenida del Cudeca s/n<br>29631 Benalmádena, Málaga</p>
+                <p>📞 +34 952 564 910</p>
+                <p>📧 info@cudeca.org</p>
+                <p>🕐 Lun - Vie: 9:00 - 18:00</p>
+            </div>
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <a href="#">→ Sobre Nosotros</a>
+                <a href="#">→ Cómo Ayudar</a>
+                <a href="#">→ Eventos</a>
+                <a href="#">→ Voluntariado</a>
+                <a href="#">→ Donaciones</a>
+                <a href="#">→ Blog</a>
+            </div>
+            <div class="footer-section">
+                <h3>Síguenos</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon" title="Facebook">f</a>
+                    <a href="#" class="social-icon" title="Instagram">📷</a>
+                    <a href="#" class="social-icon" title="Twitter">🐦</a>
+                    <a href="#" class="social-icon" title="LinkedIn">in</a>
+                </div>
+                <p style="margin-top: 20px;">📧 Newsletter</p>
+                <p style="font-size: 12px; opacity: 0.8;">Mantente informado de nuestras actividades</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Fundación Cudeca. Todos los derechos reservados.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Cookies</a>
+                <a href="#">Aviso Legal</a>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
