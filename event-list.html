@@ -239,15 +239,23 @@
             .footer-end { flex-direction: column; gap: 15px; text-align: center; }
             .footer-links { flex-direction: column; gap: 10px; }
         }
+        .evento-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
             <a href="index.html">
-            <img src="images/logo.jpg" alt="Fundación Cudeca Logo" class="logo-img">
-            </a>
+                <img src="images/logo.jpg" alt="Fundación Cudeca Logo" class="logo-img">
+             </a>
         </div>
+           
+            
         <h1 class="header-title">Tu Apoyo es <span class="esperanza">Esperanza</span></h1>
         <button class="login-btn">
             <span>👤</span>
@@ -271,26 +279,8 @@
 
         <div class="eventos-grid">
             <!-- Evento 1 -->
-            <div class="evento-card" onclick="window.location.href='event.html'">
-                <img src="images/walkathon.jpg" alt="Marcha por la Vida" class="evento-img">
-                <div class="evento-content">
-                    <span class="evento-tag">Deportivo</span>
-                    <h3 class="evento-titulo">Marcha por la Vida</h3>
-                    <p class="evento-descripcion">Participa en nuestra marcha anual. 10 km de solidaridad por las calles de Málaga.</p>
-                    <div class="evento-info">
-                        <div class="info-item">📅 23 de noviembre de 2025</div>
-                        <div class="info-item">🕐 09:00 - 13:00</div>
-                        <div class="info-item">📍 Plaza de la Marina, Málaga</div>
-                    </div>
-                    <div class="evento-footer">
-                        <span class="evento-precio">15€</span>
-                        <span class="evento-estado estado-disponible">Plazas disponibles</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Evento 2 -->
-            <div class="evento-card">
+             <a href="event.html" class="evento-link">
+             <div class="evento-card">
                 <img src="images/caminata.jpg" alt="Caminata Solidaria" class="evento-img">
                 <div class="evento-content">
                     <span class="evento-tag">Deportivo</span>
@@ -306,7 +296,32 @@
                         <span class="evento-estado estado-disponible">Plazas disponibles</span>
                     </div>
                 </div>
+               </a>
+             </div>
+             
+
+            <!-- Evento 2 -->
+             <a href="event2.html" class ="evento-link">
+                 <div class="evento-card">
+                <img src="images/mercadillo.jpg" alt="Mercadillo Vintage" class="evento-img">
+                <div class="evento-content">
+                    <span class="evento-tag">Solidario</span>
+                    <h3 class="evento-titulo">Mercadillo Vintage Solidario</h3>
+                    <p class="evento-descripcion">Encuentra tesoros vintage y ayuda a la fundación. Ropa, libros y más.</p>
+                    <div class="evento-info">
+                        <div class="info-item">📅 04 de enero de 2026</div>
+                        <div class="info-item">🕐 10:00 - 18:00</div>
+                        <div class="info-item">📍 Centro Cudeca, Benalmádena</div>
+                    </div>
+                    <div class="evento-footer">
+                        <span class="evento-precio gratis">Entrada libre</span>
+                        <span class="evento-estado estado-disponible">Acceso libre</span>
+                    </div>
+                </div>
             </div>
+             </a>
+            
+            
 
             <!-- Evento 3 -->
             <div class="evento-card">
@@ -328,23 +343,31 @@
             </div>
 
             <!-- Evento 4 -->
-            <div class="evento-card">
-                <img src="images/mercadillo.jpg" alt="Mercadillo Vintage" class="evento-img">
-                <div class="evento-content">
-                    <span class="evento-tag">Solidario</span>
-                    <h3 class="evento-titulo">Mercadillo Vintage Solidario</h3>
-                    <p class="evento-descripcion">Encuentra tesoros vintage y ayuda a la fundación. Ropa, libros y más.</p>
-                    <div class="evento-info">
-                        <div class="info-item">📅 04 de enero de 2026</div>
-                        <div class="info-item">🕐 10:00 - 18:00</div>
-                        <div class="info-item">📍 Centro Cudeca, Benalmádena</div>
-                    </div>
-                    <div class="evento-footer">
-                        <span class="evento-precio gratis">Entrada libre</span>
-                        <span class="evento-estado estado-disponible">Acceso libre</span>
-                    </div>
-                </div>
+            <a href="event.html" class="evento-link">
+    <div class="evento-card">
+        <img src="images/walkathon.jpg" alt="Marcha por la Vida" class="evento-img">
+
+        <div class="evento-content">
+            <span class="evento-tag">Deportivo</span>
+            <h3 class="evento-titulo">Marcha por la Vida</h3>
+            <p class="evento-descripcion">
+                Participa en nuestra marcha anual. 10 km de solidaridad por las calles de Málaga.
+            </p>
+
+            <div class="evento-info">
+                <div class="info-item">📅 23 de noviembre de 2025</div>
+                <div class="info-item">🕐 09:00 - 13:00</div>
+                <div class="info-item">📍 Plaza de la Marina, Málaga</div>
             </div>
+
+            <div class="evento-footer">
+                <span class="evento-precio">15€</span>
+                <span class="evento-estado estado-disponible">Plazas disponibles</span>
+            </div>
+        </div>
+    </div>
+</a>
+            
 
             <!-- Evento 5 -->
             <div class="evento-card">
